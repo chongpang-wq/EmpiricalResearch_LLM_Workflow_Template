@@ -1,0 +1,51 @@
+# Data folders
+data_raw/
+data_intermediate/
+data_final/
+
+# Large / sensitive data files
+*.dta
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.pickle
+*.pkl
+*.zip
+*.rar
+*.7z
+
+# Generated result files, but keep result documentation
+result/table/*
+!result/table/readme_table.md
+
+result/figure/*
+!result/figure/readme_figure.md
+
+# Optional paper-ready results can be tracked
+!result/paper_ready/
+!result/paper_ready/**
+
+# LLM bridge transient messages
+llm_bridge/cache_to_codex/*
+llm_bridge/cache_to_research_llm/*
+llm_bridge/archive/*
+
+# Keep placeholders if needed
+!llm_bridge/cache_to_codex/.gitkeep
+!llm_bridge/cache_to_research_llm/.gitkeep
+!llm_bridge/archive/.gitkeep
+
+# Logs/temp
+*.log
+*.smcl
+*.tmp
+~$*
+.DS_Store
+Thumbs.db
+
+# Python/Stata caches
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.stswp

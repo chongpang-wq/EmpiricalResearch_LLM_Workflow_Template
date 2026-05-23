@@ -1,0 +1,22 @@
+project:
+  title: "[PROJECT_TITLE]"
+  root: "[LOCAL_PROJECT_ROOT]"
+
+interpreters:
+  python: "[PYTHON_INTERPRETER_PATH]"
+  stata: "[STATA_EXECUTABLE_PATH]"
+
+folders:
+  code: "code"
+  data_raw: "data_raw"
+  data_intermediate: "data_intermediate"
+  data_final: "data_final"
+  result: "result"
+  table: "result/table"
+  figure: "result/figure"
+
+external_dependencies: []
+
+notes:
+  - "This file is reference-only unless code explicitly consumes it."
+  - "Store only project paths and non-sensitive configuration here."
