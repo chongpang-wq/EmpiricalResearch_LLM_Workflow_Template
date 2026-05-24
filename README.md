@@ -14,7 +14,7 @@ The goal is not just to organize files. The goal is to make empirical projects e
 
 ## Who This Is For
 
-This template is useful for empirical researchers, PhD students, RAs, and coauthor teams using Python, Stata, R, LaTeX, Git, Dropbox, GitHub, or LLM/coding-agent workflows.
+This template is useful for empirical researchers, PhD students, RAs, and coauthor teams using Python, Stata, R, LaTeX, Git, Dropbox, GitHub, or LLM/coding-agent workflows. You don't need to be able to write codes (but of course, it will be good if you can read and understand them...) or have an API.
 
 I recommend you use at least two separate agents (the template is tested using ChatGPT5.5 and Codex), a coding one and research one. There's a simple coding-free mechanism to coordinate them. But if you insist, a single agent should also work well with the template.
 
@@ -56,7 +56,7 @@ The template also supports a lightweight bridge-command system for cross-LLM coo
 
 ### 1. Initialize a project
 
-Copy this template into a new project folder, then tell your coding LLM or coding agent where the template is located.
+Copy this template into a new project folder, then tell your coding LLM or coding agent where the template is located. It is recommended you use one within your dropbox, which will make coordination with your coauthors easier. It also allows research agents like ChatGPT to access your research project in a more convenient way.
 
 Ask it, in natural language, to initialize the project from the template. It should first read the startup files, then ask you for:
 
