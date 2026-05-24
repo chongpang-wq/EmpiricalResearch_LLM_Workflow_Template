@@ -168,6 +168,267 @@ Important cautions:
 - Users should always check `git status` before pushing to a public or shared repository.
 - Restricted or confidential data should never be committed to GitHub.
 
+## Prompt Templates
+
+The following prompt templates are written for researchers who want to control LLM/coding-agent work through simple natural-language instructions.
+
+They are optional. You can copy, paste, and modify them.
+
+### Initialize a new project
+
+Use this prompt after copying the template into a new project folder:
+
+```text
+Initialize this project from the empirical research workflow template.
+
+Template location:
+[PASTE_TEMPLATE_OR_PROJECT_FOLDER_PATH]
+
+First read:
+- README.md
+- INITIALIZE_PROJECT.md
+- !technical_readme.md
+- approval_policy.md
+
+Then ask me for the required project metadata, local interpreter paths, and raw-data information.
+
+Do not begin coding yet.
+Do not run any scripts.
+Do not create intermediate data, final data, tables, figures, or result files.
+Update documentation only after I provide the required information.
+```
+
+### Provide project information during initialization
+
+Use this prompt when the coding LLM asks for project metadata:
+
+```text
+Project title:
+[PROJECT_TITLE]
+
+Short project description:
+[ONE_PARAGRAPH_DESCRIPTION]
+
+Main research question or empirical objective:
+[QUESTION_OR_OBJECTIVE]
+
+Main data sources:
+[DATA_SOURCE_LIST]
+
+Local project root path:
+[LOCAL_PROJECT_ROOT]
+
+Stata executable path:
+[STATA_PATH_OR_NOT_USED]
+
+Python interpreter path:
+[PYTHON_PATH_OR_NOT_USED]
+
+TeX/LaTeX compiler path:
+[TEX_PATH_OR_NOT_USED]
+
+Raw data location or download instructions:
+[RAW_DATA_LOCATION_OR_PUBLIC_DOWNLOAD_INSTRUCTIONS]
+
+Raw data notes:
+- source:
+- unit of observation:
+- key identifiers:
+- time coverage:
+- geographic coverage:
+- access restrictions:
+- known caveats:
+
+Expected durable outputs:
+[OUTPUTS]
+
+Special approval rules:
+[RULES_OR_NONE]
+```
+
+### Ask a coding LLM to modify code safely
+
+Use this prompt before an approved coding task:
+
+```text
+Modify the code for the following task:
+
+[TASK_DESCRIPTION]
+
+Before editing, read:
+- approval_policy.md
+- skills/short_silent_bug_checklist.md
+- relevant folder-level README files
+
+Do not silently change:
+- sample restrictions
+- variable definitions
+- controls
+- fixed effects
+- clustering
+- estimators
+- treatment definitions
+- output paths
+
+If any such change seems necessary, stop and ask for approval.
+
+After editing, report:
+- files changed
+- analytical changes
+- non-analytical refactors
+- commands run
+- outputs created or overwritten
+- validation checks
+- remaining risks
+```
+
+### Ask for a full silent research bug audit
+
+Use this prompt when you want a structured empirical-code audit:
+
+```text
+Perform a full silent research bug audit.
+
+Read:
+- approval_policy.md
+- skills/full_silent_bug_checklist.md
+- relevant code and documentation files
+
+Focus on research correctness, not code style.
+
+Report each relevant item as:
+- Pass
+- Risk
+- Fail
+- Not checked
+
+Prioritize:
+- sample changes
+- merges
+- unit of observation
+- variable construction
+- timing and exposure windows
+- fixed effects
+- clustering
+- weights
+- missing values
+- stale outputs
+- consistency with the documented specification
+
+Do not modify files unless I explicitly approve it.
+```
+
+### Trigger Chinese administrative-division matching rules
+
+Use this prompt when a task involves Chinese region codes or names:
+
+```text
+This task involves Chinese administrative divisions.
+
+Before matching, merging, or cleaning region codes or names, read:
+- skills/china_administrative_zone.md
+- skills/reference_data/README.md
+
+Do not assume a code is an official administrative code just because it looks like one.
+
+Confirm:
+- code type
+- administrative level
+- year
+- province/prefecture/county distinction
+- boundary changes
+- duplicate names
+- lost leading zeros
+
+If you use reference_data/code_year_region.csv, report why it was needed and how it was used.
+```
+
+### Trigger monetary-units and deflation rules
+
+Use this prompt when a task involves money, exchange rates, real/nominal values, or deflation:
+
+```text
+This task involves monetary variables.
+
+Before reading, constructing, converting, deflating, logging, or interpreting monetary values, read:
+- skills/monetary_units_deflation_SKILL.md
+- skills/reference_data/README.md
+
+Confirm:
+- currency
+- unit
+- nominal vs real
+- time basis
+- exchange-rate direction
+- deflator source
+- base year
+- missing coverage
+
+Do not guess exchange rates or deflators.
+Do not treat missing exchange rates or deflators as 1.
+Do not deflate a variable twice.
+```
+
+### Ask a research LLM to prepare a coding-agent task
+
+Use this prompt when you want a research-oriented LLM to write a precise coding prompt:
+
+```text
+Please convert the following research request into a coding-agent-ready task.
+
+Research request:
+[REQUEST]
+
+The coding task should include:
+- goal
+- files to read
+- files allowed to modify
+- files forbidden to modify
+- approval boundaries
+- specification constraints
+- expected output
+- validation checks
+- reporting requirements
+
+The task must not allow silent changes to sample restrictions, variable definitions, fixed effects, clustering, estimators, treatment definitions, or output paths.
+```
+
+### Trigger bridge communication between research LLM and coding LLM
+
+Use this exact command when you want the receiving agent to inspect the bridge:
+
+```text
+llm
+```
+
+`llm` means: read `llm_bridge/README.md` and check the relevant bridge inbox/cache.
+
+`llm` does **not** approve code execution, file modification, data modification, result generation, or specification changes.
+
+### Approve or reject a pending sensitive action
+
+Use these exact commands only after a coding LLM/Codex has shown a pending sensitive-action risk notice.
+
+Approve the pending sensitive action:
+
+```text
+au
+```
+
+Reject the pending sensitive action:
+
+```text
+uau
+```
+
+Reset temporary bridge state:
+
+```text
+renew
+```
+
+`au` approves only the pending action within the exact stated scope. It is not blanket approval for extra files, extra commands, new results, or specification changes.
+
 ## Example Data Rule
 
 This template contains example data files under `examples/data_documentation/` only to demonstrate how raw data and codebooks should be documented.
