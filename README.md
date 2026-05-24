@@ -16,6 +16,8 @@ The goal is not just to organize files. The goal is to make empirical projects e
 
 This template is useful for empirical researchers, PhD students, RAs, and coauthor teams using Python, Stata, R, LaTeX, Git, Dropbox, GitHub, or LLM/coding-agent workflows.
 
+I recommend you use at least two separate agents (the template is tested using ChatGPT5.5 and Codex), a coding one and research one. There's a simple coding-free mechanism to coordinate them. But if you insist, a single agent should also work well with the template.
+
 It is especially useful when a project needs to grow from exploratory data work into a reproducible and submission-ready replication package.
 
 ## What This Template Is Not
@@ -70,6 +72,8 @@ Ask it, in natural language, to initialize the project from the template. It sho
 After this information is provided, the coding LLM should update the project documentation and configuration files. It should not begin coding, run scripts, create final data, or generate results unless explicitly approved.
 
 If data are public and you approve, the coding LLM may help download them and document the source. If data are private, restricted, or manually supplied, it should only document the location and access rules.
+
+If you switch to a new agent, tell it to read files start with "!" and follow the instructions. It then automatically learns all information required for work.
 
 ### 2. Use natural-language triggers
 
