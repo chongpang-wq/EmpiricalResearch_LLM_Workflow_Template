@@ -31,7 +31,7 @@ The template includes example documentation files under `examples/data_documenta
 
 These files are examples only. They must not be used as real data.
 
-During initialization, after real raw data are added or linked and documented, the coding LLM must delete `examples/data_documentation/` unless the human explicitly approves retaining it as template documentation only. Record any retention approval in `!llm_record.md`.
+During initialization, after real raw data are added or linked and documented, the coding LLM must delete or archive `examples/data_documentation/` unless the human explicitly approves retaining it as template documentation only. Record any retention approval in `!llm_record.md`.
 
 ## Root Folder Structure
 
@@ -77,12 +77,12 @@ During initialization, after real raw data are added or linked and documented, t
 | Results | `result/` | Tables, figures, and review outputs; approval required before LLM modification. |
 | Task records | `tasks/` | Work orders, execution notes, review notes, and approval gates. |
 | Cross-LLM bridge | `llm_bridge/` | Explicit-trigger communication between research LLM and coding LLM. |
-| Skills | `skills/` | Optional-trigger instructions for code review, China administrative matching, and monetary units. |
-| Example data documentation | `examples/data_documentation/` | Template example only; delete after initialization unless retained with approval. |
+| Skills | `skills/` | Optional-trigger instructions for code review, administrative matching, and monetary units. |
+| Example data documentation | `examples/data_documentation/` | Template example only; delete or archive after initialization unless retained with approval. |
 
 ## Skills Rule
 
-The `skills/` folder is intentionally retained because China-focused empirical research often requires special handling of administrative divisions, monetary units, deflation, and silent code bugs.
+The core workflow is general. The `skills/` folder includes optional modules. Some modules are China-focused because administrative division matching, monetary units, and deflation are common sources of silent bugs in China-related empirical research.
 
 Do not read every skill by default. Trigger them only when relevant:
 
@@ -93,14 +93,36 @@ Do not read every skill by default. Trigger them only when relevant:
 
 Do not modify anything inside `skills/` without explicit human approval.
 
+## Bridge Commands
+
+The template includes a lightweight bridge system for coordinating a research-oriented LLM and a coding LLM/Codex.
+
+These commands are exact natural-language commands. The human researcher should send the command alone, with no other text.
+
+| Command | Meaning |
+|---|---|
+| `llm` | Trigger the bridge protocol. The receiving agent should read `llm_bridge/README.md` and check the relevant inbox/cache. |
+| `au` | Approve one pending sensitive action, within the exact stated scope. |
+| `uau` | Reject one pending sensitive action. |
+| `renew` | Reset temporary bridge state. |
+
+`llm` is never approval to run code, modify data, modify result files, or change empirical specifications.
+
+If a bridge message asks for a sensitive action, the coding LLM/Codex must first show a short risk notice and wait for `au` or `uau`.
+
 ## Role Clarification
 
 The human researcher approves substantive changes, code runs, result generation, empirical specification changes, external dependency decisions, and raw-data decisions.
 
-Research-oriented LLMs advise on research design, empirical strategy, documentation, writing, and Codex-ready prompts.
+Research-oriented LLMs advise on research design, empirical strategy, documentation, writing, and coding-agent prompts.
 
 Coding LLMs/Codex implement approved code and documentation tasks. They must not silently change specifications, samples, controls, fixed effects, clustering, estimators, treatment definitions, variable definitions, or result paths.
 
+A project can be run with a single LLM, but this is not recommended for complex empirical projects. Separating research judgment from implementation reduces silent research-design risk.
+
 ## Workflow-Ready Status
 
-A project is workflow-ready when documentation, paths, raw-data descriptions, approval boundaries, and folder rules are in place. It is not analysis-ready until validated data pipelines, final datasets, empirical specifications, and result-generation scripts exist.
+A project is workflow-ready when documentation, paths, raw-data descriptions, approval boundaries, and folder rules are in place.
+
+It is not analysis-ready until validated data pipelines, final datasets, empirical specifications, and result-generation scripts exist.
+

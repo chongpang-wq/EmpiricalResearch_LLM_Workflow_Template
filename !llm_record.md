@@ -2,7 +2,7 @@
 
 This file stores compact project memory for future LLM agents.
 
-It is fully controlled by LLM agents. Future LLMs may rewrite, condense, reorganize, or trim this file when doing so improves usefulness.
+This file may be maintained by LLM agents under the project approval rules. LLMs may condense, reorganize, or trim this file when doing so improves usefulness and does not remove approval-sensitive information.
 
 The goal is not to preserve a full transcript. The goal is to preserve high-value context that helps future agents continue the project safely.
 
@@ -22,15 +22,27 @@ Record:
 - initialization date;
 - human-provided project description;
 - local project root path;
-- Python and Stata paths;
-- raw data added, linked, or pending;
+- Python, Stata, and TeX/LaTeX paths when relevant;
+- raw data added, linked, downloaded, or pending;
 - external dependencies;
-- whether example data were deleted or explicitly retained;
+- whether example data were deleted, archived, or explicitly retained;
 - remaining placeholders or open questions.
 
 ## Recent Completed Actions
 
 [Add compact notes after materially useful project actions.]
+
+## Approval-Sensitive Decisions
+
+Record durable decisions about:
+
+- data access;
+- sample restrictions;
+- variable definitions;
+- empirical specifications;
+- result-generation approvals;
+- sensitive actions approved through `au`;
+- sensitive actions rejected through `uau`.
 
 ## Maintenance Guidance
 
@@ -38,4 +50,5 @@ Record:
 - Remove stale or low-value notes when they stop helping.
 - Record approval-sensitive decisions clearly.
 - Record if example data were retained despite the default cleanup rule.
-- Do not store private credentials, passwords, or confidential raw data content here.
+- Do not store private credentials, passwords, confidential raw data content, or restricted data extracts here.
+

@@ -1,0 +1,6 @@
+variable_name,label,type,unit,missing_rule,source_note
+unit_id,Unit identifier,string,N/A,Must be documented,Example ID variable
+year,Calendar year,integer,year,Must be documented,Example time variable
+region_id,Region identifier,string,N/A,Check administrative matching rules when relevant,Example region variable
+outcome_var,Outcome variable,numeric,project-specific,Document missing values,Example outcome
+treatment_var,Treatment or exposure variable,numeric,project-specific,Document construction,Example treatment

@@ -1,51 +1,39 @@
-# Data folders
-data_raw/
-data_intermediate/
-data_final/
+# Raw and generated data
+data_raw/**
+data_intermediate/**
+data_final/**
+result/**
 
-# Large / sensitive data files
-*.dta
-*.csv
-*.xlsx
-*.xls
-*.parquet
-*.pickle
-*.pkl
-*.zip
-*.rar
-*.7z
-
-# Generated result files, but keep result documentation
-result/table/*
+# Keep documentation files inside data/result folders
+!data_raw/readme_data_raw.md
+!data_intermediate/readme_data_intermediate.md
+!data_intermediate/test/
+!data_final/readme_data_final.md
+!result/readme_result.md
+!result/figure/
+!result/figure/README.md
+!result/table/
 !result/table/readme_table.md
 
-result/figure/*
-!result/figure/readme_figure.md
-
-# Optional paper-ready results can be tracked
-!result/paper_ready/
-!result/paper_ready/**
-
-# LLM bridge transient messages
-llm_bridge/cache_to_codex/*
-llm_bridge/cache_to_research_llm/*
-llm_bridge/archive/*
-
-# Keep placeholders if needed
-!llm_bridge/cache_to_codex/.gitkeep
-!llm_bridge/cache_to_research_llm/.gitkeep
-!llm_bridge/archive/.gitkeep
-
-# Logs/temp
+# Local config and logs
 *.log
-*.smcl
 *.tmp
-~$*
+*.bak
 .DS_Store
 Thumbs.db
 
-# Python/Stata caches
+# Stata
+*.smcl
+*.gph
+*.ster
+
+# Python
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-*.stswp
+
+# Secrets / local overrides
+.env
+.env.*
+config/local_paths.yaml
+config/secrets.yaml

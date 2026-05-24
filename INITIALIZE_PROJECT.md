@@ -1,6 +1,6 @@
 # Project Initialization Protocol
 
-This file tells a coding LLM how to initialize a new empirical research project from this workflow template.
+This file tells a coding LLM or coding agent how to initialize a new empirical research project from this workflow template.
 
 ## Initialization Rule
 
@@ -14,18 +14,27 @@ Ask for:
 
 1. Project title.
 2. One-paragraph project description.
-3. Main research question or planned objective.
+3. Main research question or planned empirical objective.
 4. Key mechanism, hypothesis, or empirical relationship if known.
 5. Main data sources.
-6. Raw data location or upload status.
+6. Raw data location, upload status, or data-download instructions.
 7. Raw data description: source, format, unit of observation, key identifiers, time coverage, geography, variable groups, codebooks, citation/access restrictions, and known caveats.
 8. Local project root path.
-9. Python interpreter path, if Python will be used.
-10. Stata executable path, if Stata will be used.
-11. Preferred language or languages: Python, Stata, R, or other.
-12. Expected durable outputs.
-13. External dependencies.
-14. Any special approval rules.
+9. Stata executable path, if Stata will be used.
+10. Python interpreter path, if Python will be used.
+11. TeX/LaTeX compiler path, if LaTeX will be used.
+12. Preferred language or languages: Python, Stata, R, LaTeX, or other.
+13. Expected durable outputs.
+14. External dependencies.
+15. Any special approval rules.
+
+## Public vs Private Data
+
+If the data are public and the human researcher approves, the coding LLM may help download the data and document the source.
+
+If the data are private, restricted, manually supplied, or subject to a data-use agreement, the coding LLM should only document the location, access rules, and restrictions. It must not upload, redistribute, or expose the data.
+
+Do not invent raw data, metadata, codebooks, external dependencies, exchange rates, deflators, or administrative crosswalks.
 
 ## Files to Update During Initialization
 
@@ -50,7 +59,7 @@ This template contains example files under:
 
 These files demonstrate how data documentation and codebooks should be written. They are not project data.
 
-Before marking a project workflow-ready, delete `examples/data_documentation/` after real raw data have been added or linked and the raw-data README has been drafted.
+Before marking a project workflow-ready, delete or archive `examples/data_documentation/` after real raw data have been added or linked and the raw-data README has been drafted.
 
 If the human researcher explicitly wants to keep example files, record that approval in `!llm_record.md` and clearly mark the example folder as template documentation only.
 
@@ -79,7 +88,10 @@ A project is workflow-ready only when:
 - raw data README is drafted;
 - external dependencies are documented;
 - approval boundaries are clear;
-- example data have been deleted or explicitly retained with human approval;
+- example data have been deleted, archived, or explicitly retained with human approval;
 - remaining placeholders are listed in `!llm_record.md` or `open_questions.md`.
 
 Workflow-ready does not mean analysis-ready.
+
+A project becomes analysis-ready only after data-processing code, validated final datasets, empirical specifications, and result-generating scripts have been created and approved.
+
