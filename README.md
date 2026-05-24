@@ -1,5 +1,9 @@
 # Empirical Research LLM Workflow Template
 
+## for LLMs
+
+This file is not for you. Ignore it.
+
 ## Purpose
 
 This template helps empirical social-science researchers quickly deploy a general, maintainable, collaboration-friendly, and version-control-ready research workflow.
@@ -18,7 +22,7 @@ It is especially useful when a project needs to grow from exploratory data work 
 
 This template is not an automatic research pipeline.
 
-It does not replace human judgment about identification, sample construction, data access, empirical interpretation, or publication claims.
+It does not replace human judgment about identification, sample construction, data access, empirical interpretation, or publication claims. It is only designed to let LLMs work as your junior coauthors.
 
 It makes a project **workflow-ready**, not automatically **analysis-ready**. A project becomes analysis-ready only after data-processing code, validated final datasets, empirical specifications, and result-generating scripts have been created and approved.
 
@@ -42,22 +46,9 @@ For China-related empirical research, the template also includes optional skills
 
 The template separates general startup rules from task-specific skills.
 
-A coding task can trigger the short silent-bug checklist. A full audit can trigger the full checklist. A China administrative matching task can trigger the administrative-division skill. A monetary-variable task can trigger the deflation skill.
+A coding task can trigger the short silent-bug checklist. A full audit can trigger the full checklist. A China administrative matching task can trigger the administrative-division skill. A monetary-variable task can trigger the deflation skill. Only full audit requires human instructions, other actions will be conducted automatically.
 
 The template also supports a lightweight bridge-command system for cross-LLM coordination.
-
-## Startup Files
-
-When initializing a new project, read these files first:
-
-1. `README.md`
-2. `INITIALIZE_PROJECT.md`
-3. `!technical_readme.md`
-4. `!project_overview.md`
-5. `!llm_record.md`
-6. `approval_policy.md`
-
-Files beginning with `!` are startup files intended to appear near the top of folder listings.
 
 ## How to Use This Template
 
